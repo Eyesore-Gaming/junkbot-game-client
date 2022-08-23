@@ -83,6 +83,15 @@ class Game extends React.Component {
     const history = this.state.history
     const current = history[history.length -1]
 
+    const moves = history.map((step, move) => {
+      const desc = move ? 'go to move #' + move : 'Go to game start'
+      return (
+        <li>
+          <button onClick={() => this.jumpTo(move)}>{desc}</button>
+        </li>
+      )
+    })
+
     let status
     if (this.state.winner) {
       console.log('Game Over')
@@ -100,8 +109,8 @@ class Game extends React.Component {
           />
         </div>
         <div className='game-info'>
-          <div>{status}</div>
-          <div>{/* TODO */}</div>
+          <div>{ status }</div>
+          <div>{ moves }</div>
         </div>
       </div>
     )
