@@ -1,6 +1,11 @@
 import React from 'react'
 import * as ReactDOMClient from 'react-dom/client'
 import './index.css'
+import GameManager from './Systems/GameManager'
+
+
+const gameManager = new GameManager()
+gameManager.init()
 
 function Square(props) {
   return (
@@ -102,7 +107,7 @@ class Game extends React.Component {
 
     return (
       <div className='game'>
-        <div className='game-baord'>
+        <div className='game-board'>
           <Board
             squares={current.squares}
             onClick={(i) => this.handleClick(i)}
